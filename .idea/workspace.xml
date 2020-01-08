@@ -1,0 +1,885 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="44072d14-211e-4bb4-9d25-b687ca859ea7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/build/libs/billing.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/Base/Headers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/Base/RequestModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/Base/ResponseModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/Base/Result.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/configs/MoviesConfigs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/ClassBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/JsonParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/LogicHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/ParamBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/PayPalOrderClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/PaypalLogic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/QueryBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/SaleArithmetic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/database/Intercommunication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/database/QueryHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/BillingClasses/AmountModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/BillingClasses/Items.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/BillingClasses/TransactionFeeModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/BillingClasses/TransactionModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/CompleteRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/DeleteRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/IdmModels/PrivilegeRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/IdmModels/RegisterAndPrivilegeResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/InsertUpdateRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/MovieModels/Thumbnail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/MovieModels/ThumbnailRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/MovieModels/ThumbnailResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/NormalResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/OrderRetrieveResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/PlaceResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/RetrieveClearPlaceRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/RetrieveResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/resources/BillingEndpoints.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/utilities/Param.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/utilities/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_braintreepayments_braintreehttp_1_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_paypal_sdk_checkout_sdk_1_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_paypal_sdk_rest_api_sdk_2_0_0_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_json_json_20090211.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/UCNETID/service/billing/BillingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/BillingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/UCNETID/service/billing/configs/ConfigsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/configs/ConfigsModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/UCNETID/service/billing/configs/IdmConfigs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/configs/IdmConfigs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/UCNETID/service/billing/configs/ServiceConfigs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/configs/ServiceConfigs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/UCNETID/service/billing/logger/ServiceFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/logger/ServiceFormatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/uci/ics/UCNETID/service/billing/logger/ServiceLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/logger/ServiceLogger.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.gradle/" />
+    <ignored path="$PROJECT_DIR$/build/" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/resources/BillingEndpoints.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="30" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/settings.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/configs/IdmConfigs.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/Base/ResponseModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/Base/Headers.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/utilities/Param.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/MovieModels/random.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/IdmModels/PrivilegeRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/IdmModels/RegisterAndPrivilegeResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/billing.yaml" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/Base/Result.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/NormalResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/RetrieveClearPlaceRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/DeleteRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/MovieModels/InsertUpdateRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/MovieModels/RetrieveResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/MovieModels/Thumbnail.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/MovieModels/ThumbnailRequest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/MovieModels/ThumbnailResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/configs/ServiceConfigs.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/configs/ConfigsModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/configs/MoviesConfigs.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/RetrieveResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/ParamBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/PaypalCode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/PayPalOrderClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/BillingService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/utilities/Util.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/database/Intercommunication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/PlaceResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/CompleteRequest.java" />
+        <option value="$PROJECT_DIR$/build/libs/billing.yaml" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/SaleArithmetic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/BillingClasses/TransactionFeeModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/BillingClasses/AmountModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/BillingClasses/TransactionModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/OrderRetrieveResponse.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/PaypalLogic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/JsonParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/BillingClasses/OrderItems.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/ClassBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/QueryBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/LogicHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/database/QueryHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/resources/BillingEndpoints.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/BillingClasses/Items.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/gradle.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules/edu.uci.ics.luisae.service.billing.iml" />
+        <option value="$PROJECT_DIR$/.idea/modules/edu.uci.ics.luisae.service.billing.test.iml" />
+        <option value="$PROJECT_DIR$/.idea/modules/edu.uci.ics.luisae.service.billing.main.iml" />
+        <option value="$PROJECT_DIR$/.idea/compiler.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_braintreepayments_braintreehttp_1_3_1.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_annotations_2_9_8.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_core_2_9_8.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_databind_2_9_8.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_dataformat_jackson_dataformat_yaml_2_9_8.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_jaxrs_jackson_jaxrs_base_2_9_8.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_jaxrs_jackson_jaxrs_json_provider_2_9_8.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_module_jackson_module_jaxb_annotations_2_9_8.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_3_0_2.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_errorprone_error_prone_annotations_2_2_0.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_failureaccess_1_0_1.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_guava_27_0_1_jre.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_j2objc_j2objc_annotations_1_1.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_protobuf_protobuf_java_3_6_1.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_paypal_sdk_checkout_sdk_1_0_1.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__com_paypal_sdk_rest_api_sdk_2_0_0_SNAPSHOT.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__commons_codec_commons_codec_1_12.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_annotation_jakarta_annotation_api_1_3_4.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__jakarta_ws_rs_jakarta_ws_rs_api_2_1_5.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__javax_validation_validation_api_2_0_1_Final.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__javax_ws_rs_javax_ws_rs_api_2_1_1.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__mysql_mysql_connector_java_8_0_15.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_checkerframework_checker_qual_2_5_2.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_codehaus_mojo_animal_sniffer_annotations_1_17.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_grizzly_grizzly_framework_2_4_4.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_grizzly_grizzly_http_2_4_4.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_grizzly_grizzly_http_server_2_4_4.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_grizzly_grizzly_http_servlet_2_4_4.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_hk2_external_aopalliance_repackaged_2_5_0.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_hk2_external_jakarta_inject_2_5_0.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_hk2_hk2_api_2_5_0.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_hk2_hk2_locator_2_5_0.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_hk2_hk2_utils_2_5_0.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_hk2_osgi_resource_locator_1_0_1.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jersey_containers_jersey_container_grizzly2_http_2_28.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jersey_core_jersey_client_2_28.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jersey_core_jersey_common_2_28.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jersey_core_jersey_server_2_28.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jersey_ext_jersey_entity_filtering_2_28.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jersey_inject_jersey_hk2_2_28.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jersey_media_jersey_media_jaxb_2_28.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jersey_media_jersey_media_json_jackson_2_28.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_glassfish_jersey_project_pom_2_28.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_javassist_javassist_3_22_0_CR2.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_json_json_20090211.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_yaml_snakeyaml_1_23.xml" />
+        <option value="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_12.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="951" />
+    <option name="width" value="978" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="edu.uci.ics.luisae.service.billing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cs122b-starter-hw4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="edu.uci.ics.luisae.service.billing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cs122b-starter-hw4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edu.uci.ics.luisae.service.billing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cs122b-starter-hw4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edu.uci.ics.luisae.service.billing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cs122b-starter-hw4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edu.uci.ics.luisae.service.billing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cs122b-starter-hw4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="edu.uci.ics.luisae.service.billing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cs122b-starter-hw4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edu.uci.ics.luisae.service.billing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cs122b-starter-hw4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="billing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edu.uci.ics.luisae.service.billing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cs122b-starter-hw4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="billing" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edu.uci.ics.luisae.service.billing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cs122b-starter-hw4" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="billing" type="462c0819:PsiDirectoryNode" />
+              <item name="utilities" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../cs122b-starter-hw5" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\unturnedleaf\fabflix\cs122b-starter-hw4\build\libs" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="edu.uci.ics.luisae.service.billing.models.MovieModels" />
+      <recent name="edu.uci.ics.luisae.service.billing.Base" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\unturnedleaf\fabflix\cs122b-starter-hw4\src\main\java\edu\uci\ics\luisae\service\billing\models" />
+      <recent name="C:\Users\unturnedleaf\fabflix\cs122b-starter-hw4\src\main\java\edu\uci\ics\luisae\service\billing" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="hw6" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/../cs122b-starter-hw5/build/libs/edu.uci.ics.luisae.service.gateway.jar" />
+      <option name="PROGRAM_PARAMETERS" value="-c billing.yaml" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\unturnedleaf\fabflix\cs122b-starter-hw4" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="44072d14-211e-4bb4-9d25-b687ca859ea7" name="Default Changelist" comment="" />
+      <created>1574376989894</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574376989894</updated>
+      <workItem from="1574376992331" duration="73000" />
+      <workItem from="1574377141394" duration="6297000" />
+      <workItem from="1574465644542" duration="3976000" />
+      <workItem from="1574474992140" duration="6599000" />
+      <workItem from="1574724437249" duration="4080000" />
+      <workItem from="1574734285724" duration="4435000" />
+      <workItem from="1574808649016" duration="12323000" />
+      <workItem from="1574895671877" duration="7991000" />
+      <workItem from="1574972262137" duration="26489000" />
+      <workItem from="1575255746256" duration="694000" />
+      <workItem from="1575328238596" duration="301000" />
+      <workItem from="1576191519917" duration="8000000" />
+      <workItem from="1576282397030" duration="1400000" />
+      <workItem from="1578455630891" duration="244000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="82902000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.020134227" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.325419" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49798658" visible="true" weight="0.27234638" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50201344" side_tool="true" weight="0.07960894" />
+      <window_info anchor="bottom" id="Build" order="12" sideWeight="0.49932885" weight="0.33240223" />
+      <window_info anchor="bottom" id="Java Enterprise" order="13" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
+      <window_info anchor="right" id="Gradle" order="9" />
+      <window_info anchor="right" id="Bean Validation" order="10" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/Base/Headers.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/MovieModels/random.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/IdmModels/PrivilegeRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/IdmModels/RegisterAndPrivilegeResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/IdmModels/idmrandom.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/NormalResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/MovieModels/ThumbnailResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="53" selection-start-line="3" selection-start-column="53" selection-end-line="3" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/MovieModels/Thumbnail.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/configs/IdmConfigs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="84" column="36" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/configs/ServiceConfigs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="15" column="53" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/configs/MoviesConfigs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="103" column="5" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
+          <folding>
+            <element signature="e#3375#3376#0" expanded="true" />
+            <element signature="e#3404#3405#0" expanded="true" />
+            <element signature="e#3439#3440#0" expanded="true" />
+            <element signature="e#3470#3471#0" expanded="true" />
+            <element signature="e#3498#3499#0" expanded="true" />
+            <element signature="e#3525#3526#0" expanded="true" />
+            <element signature="e#3556#3557#0" expanded="true" />
+            <element signature="e#3583#3584#0" expanded="true" />
+            <element signature="e#3623#3624#0" expanded="true" />
+            <element signature="e#3659#3660#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/configs/ConfigsModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="59" column="22" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/RetrieveResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="51" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/Base/Result.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-25">
+          <caret line="38" column="26" lean-forward="true" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/Base/RequestModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/BillingClasses/Cart.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/MovieModels/ThumbnailRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/ParamBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/Base/ResponseModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/BillingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="218" column="29" selection-start-line="218" selection-start-column="29" selection-end-line="218" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/PayPalOrderClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="71" selection-start-line="12" selection-start-column="71" selection-end-line="12" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/utilities/Param.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/PlaceResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/CompleteRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+          <folding>
+            <element signature="e#333#334#0" expanded="true" />
+            <element signature="e#364#365#0" expanded="true" />
+            <element signature="e#412#413#0" expanded="true" />
+            <element signature="e#452#453#0" expanded="true" />
+            <element signature="e#330#331#0" expanded="true" />
+            <element signature="e#358#359#0" expanded="true" />
+            <element signature="e#400#401#0" expanded="true" />
+            <element signature="e#434#435#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/libs/billing.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/SaleArithmetic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4">
+          <caret line="49" column="41" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/PaypalLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="89" column="86" selection-start-line="89" selection-start-column="86" selection-end-line="89" selection-end-column="86" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/JsonParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/OrderRetrieveResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="18" column="54" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/BillingClasses/OrderItems.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/ClassBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="71" column="9" lean-forward="true" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/QueryBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="62" column="68" selection-start-line="62" selection-start-column="68" selection-end-line="62" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/database/Intercommunication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-850">
+          <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/InsertUpdateRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/DeleteRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/RetrieveClearPlaceRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="59" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/BillingClasses/TransactionFeeModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="53" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/BillingClasses/TransactionModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-522">
+          <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/BillingClasses/AmountModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/utilities/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/core/LogicHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/database/QueryHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="34" column="54" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/models/BillingClasses/Items.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="37" lean-forward="true" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/uci/ics/luisae/service/billing/resources/BillingEndpoints.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="30" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>edu.uci.ics.luisae.service.billing</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Gradle: com.braintreepayments:braintreehttp:1.3.1</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

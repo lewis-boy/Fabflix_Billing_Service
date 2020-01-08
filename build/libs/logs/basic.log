@@ -1,0 +1,55 @@
+[2019/12/12 17:26:55][CONFIG][initService]  Starting service...
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Scheme: http://
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Hostname: 127.0.0.1
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Port: 12348
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Path: /api
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Logger output directory: ./logs/
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Database hostname: 127.0.0.1
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Database port: 3306
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Database username: root
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Database password provided? true
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Database name: myBilling
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Database driver: com.mysql.cj.jdbc.Driver
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Database connection settings: ?autoReconnect=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=PST
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  IDM Scheme: http://
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  IDM Hostname: 0.0.0.0
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  IDM Port: 12346
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  IDM Path: /api/idm
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  IDM Privilege Path: /privilege
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Movies Scheme: http://
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Movies Hostname: 0.0.0.0
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Movies Port: 12347
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Movies Path: /api/movies
+[2019/12/12 17:26:55][CONFIG][currentConfigs]  Movies Thumbnail Path: /thumbnail
+[2019/12/12 17:26:55][CONFIG][connectToDatabase]  Connecting to database...
+[2019/12/12 17:26:55][CONFIG][connectToDatabase]  Database URL: jdbc:mysql://127.0.0.1:3306/myBilling?autoReconnect=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=PST
+[2019/12/12 17:26:57][CONFIG][connectToDatabase]  Connected to database: jdbc:mysql://127.0.0.1:3306/myBilling?autoReconnect=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=PST
+[2019/12/12 17:26:57][CONFIG][initHTTPServer]  Initializing HTTP server...
+[2019/12/12 17:26:57][CONFIG][initHTTPServer]  Building URI from configs...
+[2019/12/12 17:26:57][CONFIG][initHTTPServer]  Final URI: http://127.0.0.1:12348/api
+[2019/12/12 17:26:57][CONFIG][initHTTPServer]  Set Jersey resources.
+[2019/12/12 17:26:57][CONFIG][initHTTPServer]  Set Jackson as serializer.
+[2019/12/12 17:26:57][CONFIG][initHTTPServer]  Starting HTTP server...
+[2019/12/12 17:26:58][CONFIG][initHTTPServer]  HTTP server started.
+[2019/12/12 17:26:58][CONFIG][initService]  Service initialized.
+[2019/12/12 17:27:02][INFO][modelMapper]  Mapping object from String
+[2019/12/12 17:27:02][INFO][OrderRetrieveHandler]  Inside logic handler
+[2019/12/12 17:27:02][INFO][getOrderIds]  Inside query handler
+[2019/12/12 17:27:02][WARNING][getOrderIds]  its the last one
+[2019/12/12 17:27:02][INFO][getOrderIds]  [Ljava.lang.String;@c17bb88
+[2019/12/12 17:27:02][INFO][OrderRetrieveHandler]  83687958R1520632L
+[2019/12/12 17:27:03][INFO][getOrder]  Test 3: "COMPLETED"
+[2019/12/12 17:27:03][INFO][getOrder]  Test 4: "2019-11-29T00:14:47Z"
+[2019/12/12 17:27:03][INFO][getOrderItems]  Inside query handler for order Items
+[2019/12/12 17:27:03][INFO][getOrderItems]  com.mysql.cj.jdbc.ClientPreparedStatement: select JSON_OBJECT('movie_id', mp.movie_id,
+                    'email', info.email,
+                    'quantity', info.quantity,
+                    'sale_date', info.sale_date,
+                    'unit_price', mp.unit_price,
+                    'discount', mp.discount) as 'Order' from (select s.movie_id,s.email,s.quantity,s.sale_date from transaction as t join sale s on t.sale_id = s.sale_id where t.token = '83687958R1520632L') as info join
+     movie_price as mp on info.movie_id=mp.movie_id
+[2019/12/12 17:27:03][INFO][modelMapper]  trying to map:
+{"email": "AdminLevel@uci.edu", "discount": 0.12999999523162842, "movie_id": "tt0308514", "quantity": 2, "sale_date": "2019-11-28", "unit_price": 12.020000457763672}
+[2019/12/12 17:27:03][INFO][modelMapper]  {"email": "AdminLevel@uci.edu", "discount": 0.12999999523162842, "movie_id": "tt0308514", "quantity": 2, "sale_date": "2019-11-28", "unit_price": 12.020000457763672}
+[2019/12/12 17:27:03][INFO][modelMapper]  Mapping object
+[2019/12/12 17:27:03][INFO][buildResponseWithHeaders]  Response being built with Result: ORDERS_RETRIEVED
