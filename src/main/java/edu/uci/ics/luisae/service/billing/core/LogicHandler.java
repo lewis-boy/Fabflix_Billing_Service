@@ -1,21 +1,16 @@
 package edu.uci.ics.luisae.service.billing.core;
 
-import com.braintreepayments.http.serializer.Json;
 import edu.uci.ics.luisae.service.billing.Base.Headers;
 import edu.uci.ics.luisae.service.billing.Base.Result;
 import edu.uci.ics.luisae.service.billing.database.QueryHandler;
 import edu.uci.ics.luisae.service.billing.logger.ServiceLogger;
 import edu.uci.ics.luisae.service.billing.models.*;
-import edu.uci.ics.luisae.service.billing.models.BillingClasses.Items;
 import edu.uci.ics.luisae.service.billing.models.BillingClasses.TransactionModel;
-import edu.uci.ics.luisae.service.billing.resources.BillingEndpoints;
 import edu.uci.ics.luisae.service.billing.utilities.Param;
-import edu.uci.ics.luisae.service.billing.utilities.Util;
 import org.json.JSONObject;
 
 import javax.ws.rs.core.Response;
 import java.io.IOException;
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 public class LogicHandler {
@@ -30,7 +25,7 @@ public class LogicHandler {
             response.setResult(Result.DUPLICATE_INSERTION);
             return response.buildResponseWithHeaders(heads);
         }
-        if(!QueryHandler.movieExists(request.getMovie_id())){
+        if(!QueryHandler.movieExists(request.getMovie_id(), request.getEmail())){
             response.setResult(Result.OPERATION_FAILED);
             return response.buildResponseWithHeaders(heads);
         }
@@ -70,7 +65,6 @@ public class LogicHandler {
     public static Response PlaceHandler(RetrieveClearPlaceRequest request, PlaceResponse response, Headers heads, RetrieveResponse retrieveResponse){
         String orderId;
         String total = SaleArithmetic.calculateSum(retrieveResponse.getItems());
-        ServiceLogger.LOGGER.info(total);
         PayPalOrderClient orderClient = new PayPalOrderClient();
         orderId = PaypalLogic.createPayPalOrder(orderClient,total,response);
         if(orderId == null){
@@ -92,30 +86,28 @@ public class LogicHandler {
             response.setResult(Result.ORDER_CAN_NOT_COMPLETE);
             return response.buildResponse();
         }
-        response.setResult(Result.ORDER_SUCCESSFUL);
+        response.setResult(Result.ORDER_COMPLETED);
         QueryHandler.complete(response,request.getToken(),captureId);
         QueryHandler.deleteCart(response,request.getToken());
+        ServiceLogger.LOGGER.info("Exiting Complete Endpoint Normally");
         return response.buildResponse();
     }
 
     public static Response OrderRetrieveHandler(RetrieveClearPlaceRequest request, OrderRetrieveResponse response, Headers heads){
-        ServiceLogger.LOGGER.info("Inside logic handler");
         TransactionModel[] transactionModels;
         ArrayList<TransactionModel> transactionModelsAL = new ArrayList<>();
         PayPalOrderClient orderClient = new PayPalOrderClient();
         String[] orderIds = QueryHandler.getOrderIds(QueryBuilder.getTokensforEmail(request.getEmail()));
         if(orderIds == null){
-            ServiceLogger.LOGGER.info("array is empty");
             response.setResult(Result.ORDER_HISTORY_DOES_NOT_EXIST);
             return response.buildResponseWithHeaders(heads);
         }
         if(orderIds.length == 0) {
-            ServiceLogger.LOGGER.warning("array is empty");
             response.setResult(Result.ORDER_HISTORY_DOES_NOT_EXIST);
             return response.buildResponseWithHeaders(heads);
         }
-        for(String order : orderIds)
-            ServiceLogger.LOGGER.info(order);
+//        for(String order : orderIds)
+//            ServiceLogger.LOGGER.info(order);
         try {
             //for now keep it in the while loop, because info from prev iteration may linger, you should make a clear function
             //for TransactionModel
@@ -133,8 +125,7 @@ public class LogicHandler {
 
             }
         }catch(IOException e){
-            ServiceLogger.LOGGER.warning(e.getMessage());
-            ServiceLogger.LOGGER.warning(e.getLocalizedMessage());
+            ServiceLogger.LOGGER.warning("IO Exception from OrderRetrieve Handler: " + e.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
         transactionModels = new TransactionModel[transactionModelsAL.size()];
@@ -143,11 +134,8 @@ public class LogicHandler {
         response.setResult(Result.ORDERS_RETRIEVED);
 
 
+        ServiceLogger.LOGGER.info("Exiting Order Retrieve Endpoint normally");
         return response.buildResponseWithHeaders(heads);
-
-
-
-        //return QueryHandler.orderRetrieve();
     }
 
 

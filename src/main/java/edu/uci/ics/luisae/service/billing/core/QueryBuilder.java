@@ -53,14 +53,17 @@ public class QueryBuilder {
     }
 
     public static String getOrderItems(String token){
-
-        return "select JSON_OBJECT('movie_id', mp.movie_id,\n" +
+        String query = "select JSON_OBJECT('movie_id', mp.movie_id,\n" +
                 "                    'email', info.email,\n" +
                 "                    'quantity', info.quantity,\n" +
                 "                    'sale_date', info.sale_date,\n" +
                 "                    'unit_price', mp.unit_price,\n" +
-                "                    'discount', mp.discount) as 'Order' from (select s.movie_id,s.email,s.quantity,s.sale_date from transaction as t join sale s on t.sale_id = s.sale_id where t.token = '83687958R1520632L') as info join\n" +
-                "     movie_price as mp on info.movie_id=mp.movie_id";
+                "                    'discount', mp.discount) as 'Order' from (select s.movie_id,s.email,s.quantity,s.sale_date from transaction as t join sale s on t.sale_id = s.sale_id where t.token = '"+
+                token + "') as info join\n" +
+        "     movie_price as mp on info.movie_id=mp.movie_id";
+
+
+        return query;
     }
 
 

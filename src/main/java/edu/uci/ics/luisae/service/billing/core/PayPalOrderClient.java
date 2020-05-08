@@ -2,7 +2,6 @@ package edu.uci.ics.luisae.service.billing.core;
 
 import com.paypal.core.PayPalEnvironment;
 import com.paypal.core.PayPalHttpClient;
-import com.paypal.sdk.v1.payments.Payment;
 
 public class PayPalOrderClient {
     private static final String clientId = "AX7AbJts4JhyEm7UaJzAXlVZ12yOUp-zrgdTTvj9D9RJw5siceOAs8oExECBH0UlXJT84j6Mav58Vuum";

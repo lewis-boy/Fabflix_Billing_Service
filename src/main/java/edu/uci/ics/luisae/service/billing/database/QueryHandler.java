@@ -7,7 +7,6 @@ import edu.uci.ics.luisae.service.billing.core.ClassBuilder;
 import edu.uci.ics.luisae.service.billing.core.QueryBuilder;
 import edu.uci.ics.luisae.service.billing.logger.ServiceLogger;
 import edu.uci.ics.luisae.service.billing.models.BillingClasses.Items;
-import edu.uci.ics.luisae.service.billing.models.InsertUpdateRequest;
 import edu.uci.ics.luisae.service.billing.models.MovieModels.ThumbnailResponse;
 import edu.uci.ics.luisae.service.billing.models.NormalResponse;
 import edu.uci.ics.luisae.service.billing.models.PlaceResponse;
@@ -27,14 +26,14 @@ public class QueryHandler {
             ResultSet rs = ps.executeQuery();
             return rs.next();
         }catch(SQLException e){
-            ServiceLogger.LOGGER.warning("warning with hasDuplicate");
+            ServiceLogger.LOGGER.warning("warning with hasDuplicate in QueryHandler");
             return true;
         }
     }
 
-    public static boolean movieExists(String movieId){
+    public static boolean movieExists(String movieId, String email){
         String[] movieIds = {movieId};
-        ThumbnailResponse response = Intercommunication.getThumbnails(movieIds);
+        ThumbnailResponse response = Intercommunication.getThumbnails(movieIds, email);
         return (response.getThumbnails() != null);
     }
 
@@ -44,14 +43,14 @@ public class QueryHandler {
             PreparedStatement ps = Util.prepareStatement(query,params);
             count = ps.executeUpdate();
             if(count <= 0){
-                ServiceLogger.LOGGER.warning("No rows affected by insert query");
                 response.setResult(Result.OPERATION_FAILED);
                 return response.buildResponseWithHeaders(heads);
             }
             response.setResult(Result.CART_INSERT_SUCCESSFUL);
+            ServiceLogger.LOGGER.info("Exiting Insert Endpoint Normally");
             return response.buildResponseWithHeaders(heads);
         }catch(SQLException e){
-            ServiceLogger.LOGGER.warning("error in insert queryhandler");
+            ServiceLogger.LOGGER.warning("SQL error in insert QueryHandler: " + e.getMessage());
             response.setResult(Result.OPERATION_FAILED);
             return response.buildResponseWithHeaders(heads);
         }
@@ -63,14 +62,14 @@ public class QueryHandler {
             PreparedStatement ps = Util.prepareStatement(query,params);
             count = ps.executeUpdate();
             if(count <= 0){
-                ServiceLogger.LOGGER.warning("No rows affected by update query");
                 response.setResult(Result.CART_ITEM_DOES_NOT_EXIST);
                 return response.buildResponseWithHeaders(heads);
             }
             response.setResult(Result.CART_ITEM_UPDATED_SUCCESSFULLY);
+            ServiceLogger.LOGGER.info("Exiting Update Endpoint Normally");
             return response.buildResponseWithHeaders(heads);
         }catch(SQLException e){
-            ServiceLogger.LOGGER.warning("error occurred in update queryhandler");
+            ServiceLogger.LOGGER.warning("error occurred in update QueryHandler: " + e.getMessage());
             response.setResult(Result.OPERATION_FAILED);
             return response.buildResponseWithHeaders(heads);
         }
@@ -82,14 +81,14 @@ public class QueryHandler {
             PreparedStatement ps = Util.prepareStatement(query,params);
             count = ps.executeUpdate();
             if(count <= 0){
-                ServiceLogger.LOGGER.warning("No rows affected by delete query");
                 response.setResult(Result.CART_ITEM_DOES_NOT_EXIST);
                 return response.buildResponseWithHeaders(heads);
             }
+            ServiceLogger.LOGGER.info("Exiting Delete Endpoint Normally");
             response.setResult(Result.CART_ITEM_DELETION_SUCCESSFUL);
             return response.buildResponseWithHeaders(heads);
         }catch(SQLException e){
-            ServiceLogger.LOGGER.warning("error occurred in delete queryhandler");
+            ServiceLogger.LOGGER.warning("error occurred in delete QueryHandler: " + e.getMessage());
             response.setResult(Result.OPERATION_FAILED);
             return response.buildResponseWithHeaders(heads);
         }
@@ -110,9 +109,9 @@ public class QueryHandler {
             items = ClassBuilder.buildFromCart(rs);
             if(items != null){
                 movie_ids = ClassBuilder.buildMovieIds(items);
-                thumbResponse = Intercommunication.getThumbnails(movie_ids);
+                thumbResponse = Intercommunication.getThumbnails(movie_ids, heads.getEmail());
                 if(thumbResponse == null){
-                    ServiceLogger.LOGGER.warning("no thumb responses");
+                    ServiceLogger.LOGGER.warning("Receieved a null from Intercommunication.getThumbnails");
                     response.setResult(Result.OPERATION_FAILED);
                     return response.buildResponseWithHeaders(heads);
                 }
@@ -120,6 +119,7 @@ public class QueryHandler {
                 finalItems = ClassBuilder.buildItemsArray(items);
                 response.setItems(finalItems);
                 response.setResult(Result.SHOPPING_CART_RETRIEVED);
+                ServiceLogger.LOGGER.info("Exiting Retrieve Endpoint Normally");
                 return response.buildResponseWithHeaders(heads);
             }
             else{
@@ -128,7 +128,8 @@ public class QueryHandler {
             }
 
 
-        }catch(SQLException e){ ServiceLogger.LOGGER.warning("error occurred in retrieve queryhandler");
+        }catch(SQLException e){
+            ServiceLogger.LOGGER.warning("error occurred in retrieve QueryHandler: " + e.getMessage());
             response.setResult(Result.OPERATION_FAILED);
             return response.buildResponseWithHeaders(heads);}
 
@@ -140,22 +141,20 @@ public class QueryHandler {
             PreparedStatement ps = Util.prepareStatement(query,params);
             count = ps.executeUpdate();
             if(count <= 0){
-                ServiceLogger.LOGGER.warning("No rows affected by clear query");
                 response.setResult(Result.CART_ITEM_DOES_NOT_EXIST);
                 return response.buildResponseWithHeaders(heads);
             }
             response.setResult(Result.SHOPPING_CART_CLEARED);
+            ServiceLogger.LOGGER.info("Exiting Clear Endpoint Normally");
             return response.buildResponseWithHeaders(heads);
         }catch(SQLException e){
-            ServiceLogger.LOGGER.warning("error occurred in update queryhandler");
+            ServiceLogger.LOGGER.warning("error occurred in clear QueryHandler: " + e.getMessage());
             response.setResult(Result.OPERATION_FAILED);
             return response.buildResponseWithHeaders(heads);
         }
     }
 
     public static void place(PlaceResponse response, RetrieveResponse retrieveResponse, String orderId, Headers heads){
-        //just in case for debugging
-        //int count;
         java.sql.Date sqlDate = new Date(System.currentTimeMillis());
         try{
             CallableStatement cs = BillingService.getCon().prepareCall(QueryBuilder.saleAndTransactionQuery());
@@ -168,10 +167,10 @@ public class QueryHandler {
                 cs.executeUpdate();
             }
         }catch(SQLException e){
-            ServiceLogger.LOGGER.info("error occurred in place queryhandler");
-            ServiceLogger.LOGGER.info(e.getMessage());
+            ServiceLogger.LOGGER.warning("error occurred in place QueryHandler: " + e.getMessage());
             response.setResult(Result.OPERATION_FAILED);
         }
+        ServiceLogger.LOGGER.info("Exiting Place Endpoint normally");
     }
 
     public static void complete(NormalResponse response, String token, String captureId){
@@ -184,8 +183,7 @@ public class QueryHandler {
                 response.setResult(Result.TOKEN_NOT_FOUND);
 
         }catch(SQLException e){
-            ServiceLogger.LOGGER.info("error occurred in complete queryhandler");
-            ServiceLogger.LOGGER.info(e.getMessage());
+            ServiceLogger.LOGGER.warning("error occurred in complete QueryHandler: " + e.getMessage());
             response.setResult(Result.ORDER_CAN_NOT_COMPLETE);
         }
     }
@@ -205,14 +203,12 @@ public class QueryHandler {
             PreparedStatement ps2 = BillingService.getCon().prepareStatement(QueryBuilder.clearQuery(email));
             ps2.executeUpdate();
         }catch(SQLException e){
-            ServiceLogger.LOGGER.info("error occurred in complete queryhandler");
-            ServiceLogger.LOGGER.info(e.getMessage());
+            ServiceLogger.LOGGER.warning("error occurred in delete QueryHandler: " + e.getMessage());
             response.setResult(Result.ORDER_CAN_NOT_COMPLETE);
         }
     }
 
     public static String[] getOrderIds(String query){
-        ServiceLogger.LOGGER.info("Inside query handler");
         ArrayList<String> orderIdsAL = new ArrayList<>();
         String[] orderIds;
         try{
@@ -222,25 +218,21 @@ public class QueryHandler {
                 orderIdsAL.add(rs.getString("token"));
             if(orderIdsAL.isEmpty())
                 return null;
-            ServiceLogger.LOGGER.warning("its the last one");
             orderIds = new String[orderIdsAL.size()];
             orderIdsAL.toArray(orderIds);
             ServiceLogger.LOGGER.info(orderIds.toString());
             return orderIds;
         }catch(Exception e){
-            ServiceLogger.LOGGER.info("error occurred in get orcer ids queryhandler");
-            ServiceLogger.LOGGER.info(e.getMessage());
+            ServiceLogger.LOGGER.info("error occurred in getOrderIds QueryHandler");
             return null;
         }
     }
 
     public static Items[] getOrderItems(String query){
-        ServiceLogger.LOGGER.info("Inside query handler for order Items");
         Items[] orderItems;
         ArrayList<Items> orderItemsAL;
         try{
             PreparedStatement ps = BillingService.getCon().prepareStatement(query);
-            ServiceLogger.LOGGER.info(ps.toString());
             ResultSet rs = ps.executeQuery();
             orderItemsAL = ClassBuilder.buildOrderItems(rs);
             if(orderItemsAL != null)
@@ -249,8 +241,8 @@ public class QueryHandler {
             return orderItems;
 
         }
-        catch(Exception e){ ServiceLogger.LOGGER.info("error occurred in get orcer ids queryhandler");
-            ServiceLogger.LOGGER.info(e.getMessage());
+        catch(Exception e){
+            ServiceLogger.LOGGER.info("error occurred in getOrderItems QueryHandler");
             return null;}
     }
 

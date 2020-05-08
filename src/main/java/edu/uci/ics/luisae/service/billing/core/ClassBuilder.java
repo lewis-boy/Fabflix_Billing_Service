@@ -5,7 +5,6 @@ import edu.uci.ics.luisae.service.billing.models.BillingClasses.Items;
 import edu.uci.ics.luisae.service.billing.models.MovieModels.ThumbnailResponse;
 import edu.uci.ics.luisae.service.billing.utilities.Util;
 
-import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,8 +26,7 @@ public class ClassBuilder {
             if(items.isEmpty())
                 return null;
         }catch(SQLException e){
-            ServiceLogger.LOGGER.warning(e.getMessage());
-            ServiceLogger.LOGGER.warning("problem in classbuilder from the cart");
+            ServiceLogger.LOGGER.warning("SQLError while trying to build from Cart " + e.getMessage());
             return null;
         }
         return items;
@@ -66,8 +64,7 @@ public class ClassBuilder {
             if(items.isEmpty())
                 return null;
         }catch(SQLException e){
-            ServiceLogger.LOGGER.warning(e.getMessage());
-            ServiceLogger.LOGGER.warning("problem in classbuilder from the cart");
+            ServiceLogger.LOGGER.warning("SQLError while trying to build from OrderItems " + e.getMessage());
             return null;
         }
         return items;

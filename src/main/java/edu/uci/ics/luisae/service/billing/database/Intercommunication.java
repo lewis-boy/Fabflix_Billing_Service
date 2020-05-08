@@ -22,7 +22,6 @@ public class Intercommunication {
 
         String servicePath = getIdmPath();
         String privilegePath = BillingService.getIdmConfigs().getPrivilegePath();
-        ServiceLogger.LOGGER.info("url: " + servicePath);
         Client client = ClientBuilder.newClient();
         client.register(JacksonFeature.class);
 
@@ -33,7 +32,6 @@ public class Intercommunication {
         try{
             ObjectMapper mapper = new ObjectMapper();
             String jsonText = response.readEntity(String.class);
-            ServiceLogger.LOGGER.info(jsonText);
             //todo fix privilegeResponse class so we dont have to do String.endsWith
             //todo problem has to do with mapping and result
             privilegeResponse = mapper.readValue(jsonText, RegisterAndPrivilegeResponse.class);
@@ -41,7 +39,6 @@ public class Intercommunication {
                 privilegeResponse.setResult(Result.SUFFICIENT_PLEVEL);
             else
                 privilegeResponse.setResult(Result.INSUFFICIENT_PLEVEL);
-            ServiceLogger.LOGGER.info("Successfully mapped to POJO: INTERCOMMUNICATION PRIVILEGE");
         }catch(IOException e){
             ServiceLogger.LOGGER.warning("Unable to map response to POJO: INTERCOMMUNICATION PRIVILEGE");
             return false;
@@ -49,33 +46,28 @@ public class Intercommunication {
         return (privilegeResponse.getResultCode() == Result.SUFFICIENT_PLEVEL.getResultCode());
     }
 
-    public static ThumbnailResponse getThumbnails(String[] movie_ids){
+    public static ThumbnailResponse getThumbnails(String[] movie_ids, String email){
         ThumbnailRequest request = new ThumbnailRequest();
         request.setMovie_ids(movie_ids);
         ThumbnailResponse thumbresponse;
 
         String servicePath = getMoviePath();
         String privilegePath = BillingService.getMoviesConfigs().getThumbnailPath();
-        ServiceLogger.LOGGER.info("url: " + servicePath);
-        ServiceLogger.LOGGER.info("service path: " + privilegePath);
         Client client = ClientBuilder.newClient();
         client.register(JacksonFeature.class);
 
         WebTarget webTarget = client.target(servicePath).path(privilegePath);
-        Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON_TYPE);
+        Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON_TYPE).header("email", email);
         Response response = invocationBuilder.post(Entity.entity(request, MediaType.APPLICATION_JSON));
 
-        ServiceLogger.LOGGER.info("TEST");
 
         try{
             ObjectMapper mapper = new ObjectMapper();
             String jsonText = response.readEntity(String.class);
-            ServiceLogger.LOGGER.info(jsonText);
             thumbresponse = mapper.readValue(jsonText, ThumbnailResponse.class);
-            ServiceLogger.LOGGER.info("Successfully mapped to POJO: INTERCOMMUNICATION PRIVILEGE");
             return thumbresponse;
         }catch(IOException e){
-            ServiceLogger.LOGGER.warning("Unable to map response to POJO: INTERCOMMUNICATION PRIVILEGE");
+            ServiceLogger.LOGGER.warning("Unable to map response to POJO: Intercommunication getThumbnails");
             return null;
         }
 

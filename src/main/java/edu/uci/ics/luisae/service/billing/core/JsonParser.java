@@ -22,7 +22,7 @@ public class JsonParser {
             am.setTotal(amountMap.getString("value"));
             t.setAmount(am);
         }catch(Exception e){
-            ServiceLogger.LOGGER.warning(e.getMessage());
+            ServiceLogger.LOGGER.warning("Exception from JsonParser getAmount" + e.getMessage());
         }
     }
 
@@ -41,7 +41,7 @@ public class JsonParser {
             t.setTransaction_fee(tfm);
 
         }catch(Exception e){
-            ServiceLogger.LOGGER.warning(e.getMessage());
+            ServiceLogger.LOGGER.warning("Exception from JsonParser getTransactionFee" + e.getMessage());
         }
     }
 
@@ -54,7 +54,7 @@ public class JsonParser {
             JSONObject firstAmount = (JSONObject) amount.get(0);
             t.setCreate_time((String)firstAmount.get("create_time"));
         }catch(Exception e){
-            ServiceLogger.LOGGER.warning(e.getMessage());
+            ServiceLogger.LOGGER.warning("Exception from JsonParser getCreateTime" + e.getMessage());
         }
     }
 
@@ -67,7 +67,7 @@ public class JsonParser {
             JSONObject firstAmount = (JSONObject) amount.get(0);
             t.setCapture_id ((String) firstAmount.get("id"));
         }catch(Exception e){
-            ServiceLogger.LOGGER.warning(e.getMessage());
+            ServiceLogger.LOGGER.warning("Exception from JsonParser getCaptureId" + e.getMessage());
         }
     }
 
@@ -75,7 +75,7 @@ public class JsonParser {
         try {
             t.setState(obj.getString("status"));
         }catch(Exception e){
-            ServiceLogger.LOGGER.warning(e.getMessage());
+            ServiceLogger.LOGGER.warning("Exception from JsonParser getState" + e.getMessage());
         }
     }
 
@@ -84,7 +84,7 @@ public class JsonParser {
         try {
             t.setUpdate_time(obj.getString("update_time"));
         }catch(Exception e){
-            ServiceLogger.LOGGER.warning(e.getMessage());
+            ServiceLogger.LOGGER.warning("Exception from JsonParser getUpdateTime" + e.getMessage());
         }
     }
 

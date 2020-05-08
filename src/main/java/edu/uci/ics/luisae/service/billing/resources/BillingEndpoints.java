@@ -1,6 +1,6 @@
 package edu.uci.ics.luisae.service.billing.resources;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import edu.uci.ics.luisae.service.billing.Base.Headers;
 import edu.uci.ics.luisae.service.billing.Base.Result;
 import edu.uci.ics.luisae.service.billing.core.LogicHandler;
@@ -8,12 +8,6 @@ import edu.uci.ics.luisae.service.billing.database.Intercommunication;
 import edu.uci.ics.luisae.service.billing.logger.ServiceLogger;
 import edu.uci.ics.luisae.service.billing.models.*;
 import edu.uci.ics.luisae.service.billing.utilities.Util;
-import org.apache.http.HttpEntity;
-import org.apache.http.util.EntityUtils;
-import org.glassfish.grizzly.http.util.HttpUtils;
-
-import javax.print.attribute.standard.Media;
-import javax.swing.text.html.parser.Entity;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
@@ -29,6 +23,7 @@ public class BillingEndpoints {
     @Produces(MediaType.APPLICATION_JSON)
     public Response cartInsert(@Context HttpHeaders headers,
                                String jsonText){
+        ServiceLogger.LOGGER.info("Entering Insert Endpoint");
         Headers heads = Util.createHeaders(headers);
         NormalResponse response = new NormalResponse();
         InsertUpdateRequest request = Util.modelMapper(jsonText,InsertUpdateRequest.class,response);
@@ -47,6 +42,7 @@ public class BillingEndpoints {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response cartUpdate(@Context HttpHeaders headers, String jsonText){
+        ServiceLogger.LOGGER.info("Entering Update Endpoint");
         Headers heads = Util.createHeaders(headers);
         NormalResponse response = new NormalResponse();
         InsertUpdateRequest request = Util.modelMapper(jsonText,InsertUpdateRequest.class,response);
@@ -60,6 +56,7 @@ public class BillingEndpoints {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response cartDelete(@Context HttpHeaders headers, String jsonText){
+        ServiceLogger.LOGGER.info("Entering Delete Endpoint");
         Headers heads = Util.createHeaders(headers);
         NormalResponse response = new NormalResponse();
         DeleteRequest request = Util.modelMapper(jsonText, DeleteRequest.class,response);
@@ -74,6 +71,7 @@ public class BillingEndpoints {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response cartRetrieve(@Context HttpHeaders headers, String jsonText){
+        ServiceLogger.LOGGER.info("Entering Retrieve Endpoint");
         Headers heads = Util.createHeaders(headers);
         RetrieveResponse response = new RetrieveResponse();
         RetrieveClearPlaceRequest request = Util.modelMapper(jsonText, RetrieveClearPlaceRequest.class,response);
@@ -87,6 +85,7 @@ public class BillingEndpoints {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response cartClear(@Context HttpHeaders headers, String jsonText){
+        ServiceLogger.LOGGER.info("Entering Clear Endpoint");
         Headers heads = Util.createHeaders(headers);
         NormalResponse response = new NormalResponse();
         RetrieveClearPlaceRequest request = Util.modelMapper(jsonText,RetrieveClearPlaceRequest.class,response);
@@ -100,6 +99,7 @@ public class BillingEndpoints {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response orderPlace(@Context HttpHeaders headers, String jsonText){
+        ServiceLogger.LOGGER.info("Entering Order Place Endpoint");
         Response postResponse;
         Headers heads = Util.createHeaders(headers);
         RetrieveResponse retrieveResponse = new RetrieveResponse();
@@ -132,6 +132,7 @@ public class BillingEndpoints {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response orderRetrieve(@Context HttpHeaders headers, String jsonText){
+        ServiceLogger.LOGGER.info("Entering Order Retrieve Endpoint");
         Headers heads = Util.createHeaders(headers);
         OrderRetrieveResponse response = new OrderRetrieveResponse();
         RetrieveClearPlaceRequest request =  Util.modelMapper(jsonText, RetrieveClearPlaceRequest.class,response);

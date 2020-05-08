@@ -7,23 +7,19 @@ import com.paypal.orders.*;
 import edu.uci.ics.luisae.service.billing.database.Intercommunication;
 import edu.uci.ics.luisae.service.billing.logger.ServiceLogger;
 import edu.uci.ics.luisae.service.billing.models.PlaceResponse;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class PaypalLogic {
     public static String createPayPalOrder(PayPalOrderClient orderClient, String total, PlaceResponse placeResponse){
-        Order order = null;
+        Order order;
         OrderRequest orderRequest = new OrderRequest();
         orderRequest.checkoutPaymentIntent("CAPTURE");
 
-        ApplicationContext applicationContext = new ApplicationContext().returnUrl(Intercommunication.getBillingPath() + "/billing/order/complete")
+        ApplicationContext applicationContext = new ApplicationContext().returnUrl("http://localhost:3000/billing/complete")
                 .cancelUrl(Intercommunication.getBillingPath() + "/billing/order/dummy");
         orderRequest.applicationContext(applicationContext);
         List<PurchaseUnitRequest> purchaseUnits = new ArrayList<>();
@@ -64,6 +60,8 @@ public class PaypalLogic {
             order = response.result();
             ServiceLogger.LOGGER.info("Capture ID: " +
                     order.purchaseUnits().get(0).payments().captures().get(0).id());
+            ServiceLogger.LOGGER.info("PayerID: " +
+                    order.payer().payerId());
             order.purchaseUnits().get(0).payments().captures().get(0).links()
                     .forEach(link -> ServiceLogger.LOGGER.info(link.rel() + " => " +
                             link.method() + ":" + link.href()));
@@ -83,8 +81,8 @@ public class PaypalLogic {
     public static JSONObject getOrder(String orderID, PayPalOrderClient orderClient) throws IOException{
         OrdersGetRequest request = new OrdersGetRequest(orderID);
         HttpResponse<Order> response = orderClient.client.execute(request);
-        ServiceLogger.LOGGER.info("Test 3: " + (new Json().serialize(response.result().status())));
-        ServiceLogger.LOGGER.info("Test 4: " + (new Json().serialize(response.result().updateTime())));
+//        ServiceLogger.LOGGER.info("Test 3: " + (new Json().serialize(response.result().status())));
+//        ServiceLogger.LOGGER.info("Test 4: " + (new Json().serialize(response.result().updateTime())));
         try {
             return new JSONObject(new Json().serialize(response.result()));
         }catch(Exception e){ServiceLogger.LOGGER.warning(e.getMessage()); return null;}

@@ -24,6 +24,7 @@ public class Util {
             String jsonString, Class<T> className, S responseModel)
     {
         ServiceLogger.LOGGER.info("Mapping object from String");
+        ServiceLogger.LOGGER.info(jsonString);
 
         try {
             return MAPPER.readValue(jsonString, className);
@@ -53,18 +54,14 @@ public class Util {
 
     public static <T> T modelMapper(String jsonString, Class<T> className)
     {
-        ServiceLogger.LOGGER.info("trying to map:\n" + jsonString);
+        ServiceLogger.LOGGER.info("Mapping object from Json String and Response Model was NOT given");
         ObjectMapper mapper = new ObjectMapper();
-
-        ServiceLogger.LOGGER.info(jsonString);
-        ServiceLogger.LOGGER.info("Mapping object");
 
         try {
             return mapper.readValue(jsonString, className);
 
         } catch (IOException e) {
             ServiceLogger.LOGGER.info("Mapping Object Failed: " + e.getMessage());
-            ServiceLogger.LOGGER.info(e.getLocalizedMessage());
             return null;
 
         }
@@ -74,8 +71,6 @@ public class Util {
     public static PreparedStatement prepareStatement(String query, Param[] paramList)
             throws SQLException
     {
-        ServiceLogger.LOGGER.info("Preparing Statement");
-
         int count = 1;
 
         PreparedStatement ps = BillingService.getCon().prepareStatement(query);
@@ -83,7 +78,7 @@ public class Util {
         for (Param param : paramList)
             ps.setObject(count++, param.getParam(), param.getType());
 
-        ServiceLogger.LOGGER.info("QueryReady: " + ps.toString());
+        ServiceLogger.LOGGER.info("Query prepared from prepareStatement: " + ps.toString());
 
         return ps;
     }
